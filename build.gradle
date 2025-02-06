@@ -49,16 +49,25 @@ tasks.withType(Test) {
     }
 }
 
-//task submitTest(type: Test) {
-//    useJUnitPlatform {
-//        includeTags("submitTest")
-//    }
-//    systemProperties(System.getProperties())
-//}
-//
-//task validationTest(type: Test) {
-//    useJUnitPlatform {
-//        includeTags("validationTest")
-//    }
-//    systemProperties(System.getProperties())
-//}
+task jent20(type: Test) {
+    useJUnitPlatform {
+        includeTags("jent20")
+    }
+    systemProperties(System.getProperties())
+}
+
+task jent100(type: Test) {
+    useJUnitPlatform {
+        includeTags("jent100")
+    }
+    systemProperties(System.getProperties())
+}
+
+task sapphire100(type: Test) {
+    useJUnitPlatform {
+        includeTags("sapphire100")
+    }
+    systemProperties(System.getProperties())
+}
+
+

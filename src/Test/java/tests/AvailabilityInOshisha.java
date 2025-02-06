@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -11,6 +12,7 @@ import static io.qameta.allure.Allure.step;
 
 public class AvailabilityInOshisha extends BeforeAll {
 
+    @Tag("jent20")
     @ParameterizedTest(name = "Наличие {0}. ")
     @Feature("Проверка наличия табака")
     @Story("Jent Cigar 20")
@@ -28,6 +30,7 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
+    @Tag("jent100")
     @ParameterizedTest(name = "Наличие {0}. ")
     @Feature("Проверка наличия табака")
     @Story("Jent Cigar 100")
@@ -45,6 +48,7 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
+    @Tag("sapphire100")
     @Disabled
     @ParameterizedTest(name = "Наличие {0}. ")
     @Feature("Проверка наличия табака")
