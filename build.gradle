@@ -70,4 +70,11 @@ task sapphire100(type: Test) {
     systemProperties(System.getProperties())
 }
 
+task otherTobacco(type: Test) {
+    useJUnitPlatform {
+        includeTags("otherTobacco")
+    }
+    systemProperties(System.getProperties())
+}
+
 
