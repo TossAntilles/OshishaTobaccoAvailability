@@ -21,7 +21,7 @@ public class AvailabilityInOshisha extends BeforeAll {
     void tobaccoAvailabilityJ20(String tobaccoName, String link){
         //открыть страницу табака
         step("Открываем страницу табака " + tobaccoName, () -> {
-            open("//catalog/product/"+link);
+            open("/catalog/product"+link);
         });
 
         step("Табак есть в наличии", () -> {
@@ -39,7 +39,7 @@ public class AvailabilityInOshisha extends BeforeAll {
     void tobaccoAvailabilityJ100(String tobaccoName, String link){
         //открыть страницу табака
         step("Открываем страницу табака " + tobaccoName, () -> {
-            open("//catalog/product/"+link);
+            open("/catalog/product"+link);
         });
 
         step("Табак есть в наличии", () -> {
@@ -53,11 +53,11 @@ public class AvailabilityInOshisha extends BeforeAll {
     @Feature("Проверка наличия табака")
     @Story("Sapphire Crown 100")
     @Owner("Toss Antilles")
-    @CsvFileSource(resources = "/jentCigar20.csv")
-    void tobaccoAvailability(String tobaccoName, String link){
+    @CsvFileSource(resources = "/sapphireCrown100.csv")
+    void tobaccoAvailabilityS100(String tobaccoName, String link){
         //открыть страницу табака
         step("Открываем страницу табака " + tobaccoName, () -> {
-            open("//catalog/product/"+link);
+            open("/catalog/product"+link);
         });
 
         step("Табак есть в наличии", () -> {
@@ -66,6 +66,23 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
+    @Tag("otherTobacco")
+    @ParameterizedTest(name = "Наличие {0}. ")
+    @Feature("Проверка наличия табака")
+    @Story("Другие табаки")
+    @Owner("Toss Antilles")
+    @CsvFileSource(resources = "/other.csv")
+    void tobaccoAvailabilityOther(String tobaccoName, String link){
+        //открыть страницу табака
+        step("Открываем страницу табака " + tobaccoName, () -> {
+            open("/catalog/product"+link);
+        });
+
+        step("Табак есть в наличии", () -> {
+            $(".add2basket").shouldBe(visible);
+        });
+
+    }
 
 
 
