@@ -49,7 +49,6 @@ public class AvailabilityInOshisha extends BeforeAll {
     }
 
     @Tag("sapphire100")
-    @Disabled
     @ParameterizedTest(name = "Наличие {0}. ")
     @Feature("Проверка наличия табака")
     @Story("Sapphire Crown 100")
