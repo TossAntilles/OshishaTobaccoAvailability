@@ -1,0 +1,23 @@
+package service;
+
+import static com.codeborne.selenide.Selenide.*;
+
+import org.openqa.selenium.Cookie;
+
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
+public class UserSession {
+
+    public void login() {
+        open("/local/templates/Oshisha/images/favicon.ico");
+
+        //age access
+        localStorage().setItem("age_access", "1");
+        sessionStorage().setItem("age_access", "1");
+
+        //session cookie
+        Cookie cookie = new Cookie("PHPSESSID", "73093a3cdfee45fc567f5da4622cd5a5");
+        getWebDriver().manage().deleteCookieNamed("PHPSESSID");
+        getWebDriver().manage().addCookie(cookie);
+    }
+}

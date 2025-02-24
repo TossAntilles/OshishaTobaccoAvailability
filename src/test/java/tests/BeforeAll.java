@@ -5,6 +5,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import service.UserSession;
 
 import java.util.Map;
 
@@ -15,17 +16,16 @@ public class BeforeAll {
     @org.junit.jupiter.api.BeforeAll
     @Step("Подготовка тестового окружения")
     static void beforeAll(){
-        System.setProperty("baseUrl", "https://oshisha.net/");
-        System.setProperty("browser", "chrome");
-        System.setProperty("browserResolution", "1920x1080");
-        System.setProperty("webDriverHost", "selenoid.autotests.cloud");
 
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.browserSize = System.getProperty("browserResolution");
+        UserSession us = new UserSession();
+
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://oshisha.net");
+        Configuration.browserSize = System.getProperty("browserResolution", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
 
-        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost") +"/wd/hub";
+        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost", "selenoid.autotests.cloud") +"/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -35,15 +35,8 @@ public class BeforeAll {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        open(System.getProperty("baseUrl"));
-        //закрыть проверку 18+
-        $("#trueModal div.age-access__buttons").$("a.age-access__button.age-access__yes").click();
-        $("#\\32 Modal div.age-access__buttons").$("a.age-access__button.age-access__yes").click();
-        //логин для доступа к табачке
-        $(".box_with_basket_login").click();
-        $("a.email-login").click();
-        $("[name=EMAIL]").setValue("schicksalkreuzung@gmail.com");
-        $("[name=PASSWORD]").setValue("11235813");
-        $("[value=Войти]").click();
+        us.login();
+
+
     }
 }

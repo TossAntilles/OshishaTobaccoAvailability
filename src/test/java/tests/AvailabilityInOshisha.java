@@ -31,6 +31,26 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
+    @Tag("jent20")
+    @ParameterizedTest(name = "{0}.")
+    @Feature("Проверка наличия табака - API")
+    @Story("Jent Cigar 20")
+    @DisplayName("Проверка наличия ")
+    @Owner("Toss Antilles")
+    @CsvFileSource(resources = "/jentCigar20.csv")
+    void tobaccoAvailabilityJ20API(String tobaccoName, String link){
+        //открыть страницу табака
+        step("Открываем страницу табака " + tobaccoName, () -> {
+            open("/catalog/product"+link);
+        });
+
+        step("Табак есть в наличии", () -> {
+            $(".add2basket").shouldBe(visible);
+        });
+
+    }
+
+
     @Tag("jent100")
     @ParameterizedTest(name = "{0}.")
     @Feature("Проверка наличия табака")
