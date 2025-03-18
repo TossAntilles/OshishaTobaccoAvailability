@@ -90,7 +90,6 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
-    @Disabled
     @Tag("otherTobacco")
     @ParameterizedTest(name = "{0}.")
     @Feature("Проверка наличия табака")
