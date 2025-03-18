@@ -24,8 +24,9 @@ public class BeforeAll {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
-
-        Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost", "selenoid.autotests.cloud") +"/wd/hub";
+        //логин-пароль для учебого хоста
+        //Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost", "selenoid.autotests.cloud") +"/wd/hub";
+        Configuration.remote = System.getProperty("webDriverHost", "217.114.8.221:8080");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -35,7 +36,8 @@ public class BeforeAll {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        us.login();
+        us.skipAgeWarnings();
+        us.loginForm();
 
 
     }
