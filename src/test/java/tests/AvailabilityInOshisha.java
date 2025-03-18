@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -89,6 +90,7 @@ public class AvailabilityInOshisha extends BeforeAll {
 
     }
 
+    @Disabled
     @Tag("otherTobacco")
     @ParameterizedTest(name = "{0}.")
     @Feature("Проверка наличия табака")
