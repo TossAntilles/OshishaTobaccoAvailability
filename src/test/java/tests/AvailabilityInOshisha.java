@@ -28,7 +28,6 @@ public class AvailabilityInOshisha extends BeforeAll {
         step("Табак есть в наличии", () -> {
             $(".add2basket").shouldBe(visible);
         });
-    }
 
     @Tag("jent100")
     @ParameterizedTest(name = "{0}.")
