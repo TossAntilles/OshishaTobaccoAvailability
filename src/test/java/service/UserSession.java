@@ -1,5 +1,6 @@
 package service;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 import org.openqa.selenium.Cookie;
@@ -18,13 +19,15 @@ public class UserSession {
 
     public void loginForm() {
         //session cookie
-        open(System.getProperty("baseUrl"));
+        //open(System.getProperty("baseUrl"));
+        open("https://oshisha.net");
         //логин через форму
         $(".box_with_basket_login").click();
-        $("a.email-login").click();
+
+        $$("a").findBy(text("Войти через почту")).parent().click();
         $("[name=EMAIL]").setValue("schicksalkreuzung@gmail.com");
         $("[name=PASSWORD]").setValue("11235813");
-        $("[value=Войти]").click();
+        $$("#submit-text").findBy(text("Войти")).parent().click();
     }
 
     public void loginCookie() {

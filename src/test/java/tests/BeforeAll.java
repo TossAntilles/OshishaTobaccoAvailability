@@ -26,7 +26,7 @@ public class BeforeAll {
         Configuration.timeout = 5000;
         //логин-пароль для учебого хоста
         //Configuration.remote = "https://user1:1234@"+ System.getProperty("webDriverHost", "selenoid.autotests.cloud") +"/wd/hub";
-        Configuration.remote = System.getProperty("webDriverHost", "217.114.8.221:4444/wd/hub/");
+        //Configuration.remote = System.getProperty("webDriverHost", "217.114.8.221:4444/wd/hub/");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
